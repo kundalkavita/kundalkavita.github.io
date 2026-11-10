@@ -1,0 +1,150 @@
+/* ===== Kavita Kundal — shared styles for every page ===== */
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --ink:#18202B; --muted:#5B6675;
+  --line:#DCE1E7; --accent:#2D3E8C; --mask:#C2367A; --mask-soft:rgba(194,54,122,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11161D; --surface:#171E27; --ink:#E6EAF0; --muted:#98A3B3;
+    --line:#2A3441; --accent:#93A5F2; --mask:#F07AB4; --mask-soft:rgba(240,122,180,.12);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11161D; --surface:#171E27; --ink:#E6EAF0; --muted:#98A3B3;
+  --line:#2A3441; --accent:#93A5F2; --mask:#F07AB4; --mask-soft:rgba(240,122,180,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);
+  font:400 17px/1.7 "Literata",Georgia,serif;-webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,.sans,header,footer{font-family:"Manrope",system-ui,sans-serif}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--mask);outline-offset:3px;border-radius:4px}
+.container{max-width:1040px;margin:0 auto;padding:0 32px;width:100%}
+
+/* ---- Top navigation ---- */
+header{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:24px;height:64px}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.tabs{display:flex;gap:4px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.tabs a{display:block;padding:8px 13px;border-radius:8px;font-weight:600;font-size:15px;color:var(--muted);text-decoration:none;white-space:nowrap}
+.tabs a:hover{color:var(--ink);background:var(--bg)}
+.tabs a[aria-current="page"]{color:var(--mask);background:var(--mask-soft)}
+.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:16px;flex:none}
+.theme:hover{color:var(--ink)}
+
+/* ---- Page body ---- */
+main{flex:1;padding:56px 0 80px}
+.page-title{font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
+.page-intro{color:var(--muted);margin:0 0 40px;max-width:62ch}
+h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:48px 0 18px}
+h2:first-of-type{margin-top:8px}
+h3{font-size:18px;font-weight:700;margin:0 0 4px;line-height:1.4}
+p{margin:0 0 16px;max-width:68ch}
+.meta{font:500 14px "Manrope",sans-serif;color:var(--muted)}
+
+/* ---- Home hero ---- */
+.hero{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start}
+.portrait{position:relative;width:220px;height:220px;margin:22px}
+.portrait img,.portrait .initials{width:220px;height:220px;border-radius:50%;object-fit:cover;display:block}
+.portrait .initials{display:none;place-items:center;background:var(--surface);border:1px solid var(--line);font:800 56px "Manrope",sans-serif;color:var(--accent)}
+.portrait svg{position:absolute;inset:-22px;width:264px;height:264px;pointer-events:none}
+.hero h1{font-size:46px;line-height:1.05;font-weight:800;letter-spacing:-.025em;margin:6px 0 10px}
+.position{font:600 16px/1.5 "Manrope",sans-serif;color:var(--muted);margin:0 0 22px}
+.lede{font-size:21px;line-height:1.55}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
+.links a{font:600 13.5px "Manrope",sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--surface);padding:7px 13px;border-radius:8px}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.interests{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.interests li{font:600 14px "Manrope",sans-serif;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.hl{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.hl b{display:block;font:700 16px/1.4 "Manrope",sans-serif;margin-bottom:4px}
+.hl span{font-size:15px;color:var(--muted)}
+
+/* ---- Cards used on Research ---- */
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:24px 28px;margin:0 0 20px}
+.card.now{border-left-color:var(--mask)}
+.card h3{font-size:20px;margin-top:4px}
+.card p:last-child{margin-bottom:0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px 32px}
+.skills h3{font-size:15px}
+.skills p{font-size:15.5px;color:var(--muted);margin:0}
+
+/* ---- Timeline (Education, Experience) ---- */
+.timeline{list-style:none;margin:0;padding:0 0 0 24px;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 30px}
+.timeline li:last-child{padding-bottom:4px}
+.timeline li::before{content:"";position:absolute;left:-31px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.timeline li.current::before{background:var(--mask);border-color:var(--mask)}
+.timeline p{font-size:15.5px;margin:6px 0 0}
+
+/* ---- Simple lists (Activities) ---- */
+.items{list-style:none;margin:0;padding:0}
+.items li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:14px 0;border-top:1px solid var(--line)}
+.items li:first-child{border-top:0}
+.items .when{font:700 14px "Manrope",sans-serif;color:var(--muted);padding-top:2px}
+.items h3{font-size:16.5px}
+.items p{font-size:15.5px;color:var(--muted);margin:2px 0 0}
+.award .when{color:var(--mask)}
+.ta{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ta .hl ul{margin:8px 0 0;padding-left:18px;font-size:15px;color:var(--muted)}
+.ta .hl li{margin:3px 0}
+.code{font:600 12.5px "Manrope",sans-serif;color:var(--muted);white-space:nowrap}
+
+/* ---- Publications ---- */
+.filters{display:flex;gap:8px;margin:0 0 22px;flex-wrap:wrap}
+.filters button{font:600 13px "Manrope",sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 13px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.year{font:800 15px "Manrope",sans-serif;color:var(--muted);margin:28px 0 8px}
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{padding:14px 0;border-top:1px solid var(--line)}
+.pubs li:first-child{border-top:0}
+.pub-title{font-weight:500;font-size:17px;line-height:1.5;margin:0 0 4px}
+.pub-title a{color:var(--ink);text-decoration:none}
+.pub-title a:hover{color:var(--accent);text-decoration:underline}
+.authors{font-size:15px;color:var(--muted);margin:0}
+.authors b{color:var(--ink);font-weight:500;background:var(--mask-soft);padding:0 3px;border-radius:3px}
+.venue{font:600 13.5px "Manrope",sans-serif;color:var(--muted);margin-top:4px}
+.tag{font:700 11.5px "Manrope",sans-serif;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.tag.pre{border:1px solid var(--line);color:var(--muted)}
+.tag.first{background:var(--mask-soft);color:var(--mask)}
+.note{font-size:14px;color:var(--muted);margin-top:18px}
+
+/* ---- Gallery ---- */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.gallery button{padding:0;border:0;background:var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.lightbox{position:fixed;inset:0;background:rgba(10,14,20,.9);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:8px}
+.lightbox button{position:absolute;top:16px;right:16px;background:#fff;border:0;border-radius:8px;padding:8px 14px;font:700 14px "Manrope",sans-serif;cursor:pointer}
+
+/* ---- Footer ---- */
+footer{border-top:1px solid var(--line);background:var(--surface);padding:28px 0;font-size:14px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+
+/* ---- Phones and small tablets ---- */
+@media (max-width:860px){
+  .container{padding:0 16px}
+  .bar{flex-wrap:wrap;height:auto;padding-top:12px;gap:8px}
+  .brand{flex:1}
+  .bar nav{order:3;width:100%;min-width:0}
+  .tabs{position:relative}
+  .tabs{width:100%;margin:0;padding:0 0 8px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs a{padding:7px 11px;font-size:14.5px}
+  main{padding:32px 0 56px}
+  .page-title{font-size:32px}
+  .hero{grid-template-columns:1fr;gap:12px}
+  .portrait,.portrait img,.portrait .initials{width:160px;height:160px}
+  .portrait{margin:18px}
+  .portrait svg{inset:-18px;width:196px;height:196px}
+  .hero h1{font-size:36px}
+  .lede{font-size:19px}
+  .card{padding:20px}
+  .items li{grid-template-columns:1fr;gap:2px}
+}

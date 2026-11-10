@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications · Kavita Kundal</title>
+<meta name="description" content="Kavita Kundal, Department of Radiology, UC Davis: brain–peripheral inflammatory interactions in autoimmune arthritis, radiogenomics and computational biology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main><div class="container">
+<h1 class="page-title">Publications</h1>
+<p class="page-intro">Journal articles, preprints and book chapters. My name is highlighted; * marks co-first authors. The full, up-to-date list is on <a href="https://scholar.google.com/citations?user=zPvxbW8AAAAJ&hl=en">Google Scholar</a>.</p>
+<div class="filters" role="group" aria-label="Filter publications">
+  <button type="button" data-f="all" aria-pressed="true">All</button>
+  <button type="button" data-f="first" aria-pressed="false">First author</button>
+  <button type="button" data-f="journal" aria-pressed="false">Journal articles</button>
+  <button type="button" data-f="pre" aria-pressed="false">Preprints</button>
+  <button type="button" data-f="chapter" aria-pressed="false">Book chapters</button>
+</div>
+<div id="publist"></div>
+<p class="note"><span class="tag first" style="margin:0">First author</span> includes co-first authorship.</p>
+</div></main>
+<script src="site.js"></script>
+<script>
+// ---- To add a new paper, copy one line in this list and change the details ----
+const pubs = [
+  {y:2024,type:"pre",first:true,title:"Unravelling the impact of tumor location on patient survival in glioblastoma: a genomics and radiomics approach",authors:"Kundal K, Kumar N, Kumar R",venue:"medRxiv",url:"https://doi.org/10.1101/2024.10.02.24314823"},
+  {y:2024,type:"journal",first:true,title:"Global microRNA profiling of bone marrow-MSC derived extracellular vesicles identifies miRNAs associated with hematopoietic dysfunction in aplastic anemia",authors:"Srivastava J*, Kundal K*, Rai B*, Saxena P, Katiyar S, Tripathy N, Yadav S, Gupta R, Kumar R, Nityanand S, Chaturvedi CP",venue:"Scientific Reports 14, 19654",url:"https://doi.org/10.1038/s41598-024-70369-8"},
+  {y:2024,type:"journal",first:true,title:"Comprehensive benchmarking of CNN-based tumor segmentation methods using multimodal MRI data",authors:"Kundal K, Rao KV, Majumdar A, Kumar N, Kumar R",venue:"Computers in Biology and Medicine 178, 108799",url:"https://doi.org/10.1016/j.compbiomed.2024.108799"},
+  {y:2024,type:"pre",first:false,title:"Radiomic based investigation of a potential link between precuneus and fusiform gyrus with Alzheimer's disease",authors:"Sharma S, Kundal K, Chandok IK, Kumar N, Kumar R",venue:"medRxiv",url:"https://www.medrxiv.org/content/10.1101/2024.05.15.24307407"},
+  {y:2024,type:"journal",first:false,title:"AMLdb: a comprehensive multi-omics platform to identify biomarkers and drug targets for acute myeloid leukemia",authors:"Vinod Kumar K, Kumar A, Kundal K, Sengupta A, R K, Singh S, Korra BT, Sharma S, Suresh V, Nishana M, Kumar R",venue:"Briefings in Functional Genomics, elae024",url:"https://doi.org/10.1093/bfgp/elae024"},
+  {y:2024,type:"journal",first:false,title:"AagingBase: a comprehensive database of anti-aging peptides",authors:"Kunjulakshmi R, Kumar A, Kumar KV, Sengupta A, Kundal K, Sharma S, Pawar A, Krishna PS, Alfatah M, Ray S, Tiwari B, Kumar R",venue:"Database 2024, baae016",url:"https://doi.org/10.1093/database/baae016"},
+  {y:2024,type:"chapter",first:false,title:"Drug repurposing",authors:"Korra BT*, Kunjulakshmi R*, Subashani*, Kar SS, Kundal K, Sengupta A, Kumar R",venue:"Springer Handbook of Chem- and Bioinformatics (accepted)",url:"https://people.iith.ac.in/rahulk/Publications.html"},
+  {y:2023,type:"journal",first:false,title:"MyeloDB: a multi-omics resource for multiple myeloma",authors:"Kumar A, Kumar KV, Kundal K, Sengupta A, R K, Kumar R",venue:"Functional & Integrative Genomics 24(1), 17",url:"https://doi.org/10.1007/s10142-023-01280-0"},
+  {y:2023,type:"journal",first:false,title:"A comprehensive rhythmicity analysis of host proteins and immune factors involved in malaria pathogenesis to decipher the importance of host circadian clock in malaria",authors:"Rankawat S, Kundal K, Kumar R, Ray S",venue:"Frontiers in Immunology 14, 1210299",url:"https://doi.org/10.3389/fimmu.2023.1210299"},
+  {y:2022,type:"journal",first:true,title:"Identification of novel peptides as potential modulators of Aβ42 amyloidogenesis: an in-silico approach",authors:"Kundal K*, Paramasivam S*, Mitra A, Sarkar N",venue:"Current Computer-Aided Drug Design",url:"https://doi.org/10.2174/1573409919666230112170012"},
+  {y:2022,type:"journal",first:true,title:"Deep learning-based classifier of diffuse large B-cell lymphoma cell-of-origin with clinical outcome",authors:"Viswanathan A*, Kundal K*, Sengupta A, Kumar A, Kumar KV, Holmes AB, Kumar R",venue:"Briefings in Functional Genomics, elac038",url:"https://doi.org/10.1093/bfgp/elac038"},
+  {y:2022,type:"journal",first:true,title:"Human serum albumin aggregation and its modulation using nanoparticles: a review",authors:"Paramasivam S*, Kundal K*, Sarkar N",venue:"Protein and Peptide Letters 29(1), 11–21",url:"https://doi.org/10.2174/0929866528666211125104600"},
+  {y:2022,type:"chapter",first:false,title:"In silico tools and approaches in stem cell biology",authors:"Kumar A, Kumar KV, R K, Kundal K, Sengupta A, Kumar R",venue:"Computational Biology for Stem Cell Research, Elsevier",url:""}
+];
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(f){
+  const list=pubs.filter(p=>f==="all"||(f==="first"?p.first:p.type===f));
+  const years=[...new Set(list.map(p=>p.y))].sort((a,b)=>b-a);
+  document.getElementById("publist").innerHTML = list.length ? years.map(y=>`
+    <div class="year">${y}</div><ul class="pubs">${list.filter(p=>p.y===y).map(p=>`
+      <li><p class="pub-title">${p.url?`<a href="${p.url}">${esc(p.title)}</a>`:esc(p.title)}${p.first?'<span class="tag first">First author</span>':''}${p.type==="pre"?'<span class="tag pre">Preprint</span>':''}${p.type==="chapter"?'<span class="tag pre">Book chapter</span>':''}</p>
+      <p class="authors">${esc(p.authors).replace(/Kundal K\*?/,m=>`<b>${m}</b>`)}</p>
+      <div class="venue">${esc(p.venue)}</div></li>`).join("")}</ul>`).join("")
+    : '<p class="meta">No publications in this category yet.</p>';
+}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  render(b.dataset.f);
+}));
+render("all");
+</script>
+</body>
+</html>

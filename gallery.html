@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery · Kavita Kundal</title>
+<meta name="description" content="Kavita Kundal, Department of Radiology, UC Davis: brain–peripheral inflammatory interactions in autoimmune arthritis, radiogenomics and computational biology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main><div class="container">
+<h1 class="page-title">Gallery</h1>
+<p class="page-intro">Moments from conferences, workshops and the lab.</p>
+<div class="gallery" id="gallery"></div>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button type="button" id="lbclose">Close</button><img alt=""></div>
+</div></main>
+<script src="site.js"></script>
+<script>
+// Each photo: [your copy in the "gallery" folder, old Google Sites copy used until you upload yours]
+// To add a photo: upload it to the gallery folder on GitHub and add a line like ["gallery/11.jpg"]
+const photos = [
+  ["gallery/1.jpg","https://sites.google.com/sitesv-images-rt/APXyLQcKnzS4FlmPV-n3HRHIjL5NtjQlAEGw6Ofa3J6boXdFkGgYGtT2t9F6G5ONbHNlqVSbMv1RL3ZZQYetKi5n_02shrdfN7KG9zdkYjhoEQyVXMQm9pSd-LYop4_6C4HGaMF4HXJtDKskqGjeiebQcdUK6boxxYSEtSHeM6kjDdkAaCg4LIgz3NfEOLr_Cbv8-Y8hOivLPmwTsZsXPrRAuz-Lo2lTEWiQs04ulqaw=w1280"],
+  ["gallery/2.jpg","https://sites.google.com/sitesv-images-rt/APXyLQecW-Ei0oy5jzlmYfGsTUY8-TURAzM0lHD-kFb-zAjPvrn_hD2QgmiuhsCfrE5D8PyCpXCLICYyzTcEUa8t4DQ579x93IMzAFFI13SuF813D4qrbYfZpdF55u7N0L5ixFYYFd-BPD8nvEhQOj4T3KwV3sNEyZ5nBOpZIkmik2rYA5P3n_5p911iqu2DovOxObS6wofRskXT7XaZlq0K3DnNVGe3Klzyov2GtNsj=w1280"],
+  ["gallery/3.jpg","https://sites.google.com/sitesv-images-rt/APXyLQc5EPG3bIbXJ_ETEncVm2Tc-5xzUFTVAx9CPyIfRO0yrlNsDIQpGmPorkmRz1Q7d20mtb-RFj1EaspAqKrxt_KGOG9ozcSkMhT_PWSPeechJVAnr8V-gkE_gOrGP1P8wmazbER1ZSUlOUynLoarXuAEC965x22uGFmxtQl5NJafAnUBTnGJtqFJuM1b5FxTBj3NNGlI6ANe60cA3VeeTKTXWpmOS-RwylYDk_K-BLE=w1280"],
+  ["gallery/4.jpg","https://sites.google.com/sitesv-images-rt/APXyLQc-p0X72Z-oWwytQ8A7pWA-cOKyMt_dta64i7VYOS5KrtWlvCl_AT1mGZHa5CJzthjr3glIvSHITyHqulTFNcLcHNMAyXOb5VdlMp5sFblDojHcp8E3mOKjlMvSQxEAZKLGI9oBW-GNHMjpkhTbL1T2zQC27ERZ8uOoS_AC2BrIgKUbOtd36lJ-3KBFH1WnaAhaCSWc3mqMYfJaMhWnOhUx0_89z6A2fv9kdbhIASI=w1280"],
+  ["gallery/5.jpg","https://sites.google.com/sitesv-images-rt/APXyLQdrcL51m15yvbyO3b0OAA54AiZ0MOugyKm6PISvArOLx5EGxP5j6yc55wMBlQMIu8jTw6oZQDmY_KKV_TFbAsW4i6bTDgI8rPj64fl8euXGbprnzxF8TMTmLwEmSCdXcooT41idTyV07RyX98nO2ichr4R41aRq7WEwcLPJRoDEqdTyXDrYNjMtWd6vB6eZKebqJkBocKf70-SIVRj9s_eY2MOZ3U78iaxUBTBQCwk=w1280"],
+  ["gallery/6.jpg","https://sites.google.com/sitesv-images-rt/APXyLQdzY_I4k1OJO9rGpCc8rL0Ec_NcbO_M4ue_SZ5BQ1JM_j3rCl8ZwHDbJ4R7lWit8EIzN-kjuZ_wtWlOUXi8EVHuPNBirCIugoxu4fgINgUpaxM3UbVMpZEWPapRWmeao7UyHi-_bOXEBGVv2Wku3nf2bn1O9Y-F2KSAblYMoc3tLKi72vTA9wWBzPYI0sa5G2CmD5TbDS_1ygl9u__CCm7G2pa60ClFahWiz9MwwEs=w1280"],
+  ["gallery/7.jpg","https://sites.google.com/sitesv-images-rt/APXyLQeLCW8MG91QJY5q-vND49xXNiQtPzHE4uYl2YxXF_UPNgRGZb_zmciC_eR1JsQPofqnMYauGvbsLs2pEoBgkBL_p27YuWbROOFE7sUdmpBMfyJUcDrTUr3gJQRb9feedGPnGSxvRl-UbnTPGAvU5Mur3oSkXr73FA28CohVH_bil7LkJ68nrzuM4ZKpUDgh2CBDAeo865dN5ycMDSW37R03asYSAmPP4jZXElZO=w1280"],
+  ["gallery/8.jpg","https://sites.google.com/sitesv-images-rt/APXyLQeAszqXrjOpKggtq48mUPXXSoTlAo-zAlFyb9_vNjWBkqSX7gz6DnZ2SoUIPkspR7dUcTkBo5UkWy7ibbaZyZadOOPBrNGL0DG21WHn9gAGnOhDPGWwmqe644UGChQsuiI5aoGRNv_z106U5HaPTgQd8bmZZs-lFkQzT0yPGB7Szl-zvBTfshxt9vbsEEpxPcnX0f7hmW8EBtTff7hZH9OktF55ky5VBE_YsaRnkTk=w1280"],
+  ["gallery/9.jpg","https://sites.google.com/sitesv-images-rt/APXyLQe0MU_VqVcWlZp9lp6o33I6dEGHqae2l9YyTgjL41n6t26Bfog6gEceDUhCCi6tSMx0dsMnR0bG0j9oKn4ns4fyJWoj7bHkjxDZIbSp6CphjyLW_-y53jGvUjmW_IpRKxU_KFKzf-FeFp_Wiqnz6Vy-plxozOO-P470Ht9Ttx7KiHmTLRuvItxmyX0sBW4PX9gHwyTl6wJRhVS5DFLxgZCnJvNCuFUjruvsPlt-nmo=w1280"],
+  ["gallery/10.jpg","https://sites.google.com/sitesv-images-rt/APXyLQeCVzs7G0ZzLR_K7HlwLHw5XZwZKllcUeASuw_VbXrGtwVhgsqp2_Cep2wy3bcsD1KdL2Owldg_hCuacygNil265NcL2QSzebH3JwwwZDTHk-kW5hd6_M6f5gHhr-1DWCw20s1KAmslptrM8rw0rNkqnlbLBMAI1ykIx_z0WNJlV1SiBqTPydCy5lDFAWACAkRko5DLChjkT295yfrbRvhY-sSFPFcUX1Q0mt0A=w1280"]
+];
+const g=document.getElementById("gallery"), lb=document.getElementById("lb"), big=lb.querySelector("img");
+photos.forEach(([mine,old],i)=>{
+  const b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Open photo "+(i+1));
+  const im=new Image(); im.alt=""; im.loading="lazy";
+  im.onerror=()=>{ if(old && !im.dataset.tried){ im.dataset.tried=1; im.src=old; } else { b.remove(); } };
+  im.src=mine;
+  b.append(im); g.append(b);
+  b.onclick=()=>{ big.src=im.src; lb.classList.add("open"); document.getElementById("lbclose").focus(); };
+});
+const close=()=>lb.classList.remove("open");
+document.getElementById("lbclose").onclick=close;
+lb.onclick=e=>{ if(e.target===lb) close(); };
+addEventListener("keydown",e=>{ if(e.key==="Escape") close(); });
+</script>
+</body>
+</html>
